@@ -7,6 +7,7 @@ const app = express();
 
 const authRoutes = require("./routes/authRoutes");
 const authMiddleware = require("./middleware/authMiddleware");
+const projectRoutes = require("./routes/projectRoutes");
 
 app.use(cors({
   origin: "http://localhost:5173",
@@ -28,6 +29,8 @@ app.get("/protected", authMiddleware, (req, res) => {
     user: req.user
   });
 });
+
+app.use("/api/projects", projectRoutes);
 
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB Connected"))
