@@ -5,25 +5,34 @@ require("dotenv").config();
 
 const app = express();
 
-// ✅ CORS must be HERE (before routes)
+const authRoutes = require("./routes/authRoutes");
+const authMiddleware = require("./middleware/authMiddleware");
+
 app.use(cors({
   origin: "http://localhost:5173",
-  methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
-
 app.use(express.json());
 
-// Test route
+
+app.use("/api/auth", authRoutes);
+
+
 app.get("/", (req, res) => {
   res.send("API is running...");
 });
 
-// DB connection
+app.get("/protected", authMiddleware, (req, res) => {
+  res.json({
+    msg: "Protected route accessed",
+    user: req.user
+  });
+});
+
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB Connected"))
   .catch(err => console.log(err));
 
-// Start server
-const PORT = process.env.PORT || 5000;
+
+const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
