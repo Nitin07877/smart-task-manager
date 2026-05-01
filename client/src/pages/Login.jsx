@@ -10,7 +10,7 @@ function Login() {
     try {
       setLoading(true);
 
-      const res = await axios.post("http://localhost:5001/api/auth/login", {
+      const res = await axios.post("https://smart-task-manager-production-f8a5.up.railway.app/auth/login", {
         email,
         password,
       });
