@@ -11,7 +11,7 @@ function Signup() {
     try {
       setLoading(true);
 
-      await axios.post("http://localhost:5001/api/auth/signup", {
+      await axios.post("https://smart-task-manager-production-f8a5.up.railway.app/auth/signup", {
         name,
         email,
         password,
