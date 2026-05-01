@@ -1,5 +1,5 @@
 const Project = require("../models/Project");
-const User = require("../models/User");
+const User = require("../models/user");
 
 // CREATE PROJECT
 exports.createProject = async (req, res) => {
