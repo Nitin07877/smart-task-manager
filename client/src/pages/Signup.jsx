@@ -1,28 +1,27 @@
 import { useState } from "react";
 import axios from "axios";
 
-function Login() {
+function Signup() {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const handleLogin = async () => {
+  const handleSignup = async () => {
     try {
       setLoading(true);
 
-      const res = await axios.post("http://localhost:5001/api/auth/login", {
+      await axios.post("http://localhost:5001/api/auth/signup", {
+        name,
         email,
         password,
       });
 
-      localStorage.setItem("token", res.data.token);
-      localStorage.setItem("role", res.data.user.role);
-      localStorage.setItem("user", JSON.stringify(res.data.user));
-      window.location.href = "/dashboard";
-
+      alert("Account created successfully! Please login.");
+      window.location.href = "/";
     } catch (err) {
       console.log(err.response?.data || err.message);
-      alert(err.response?.data?.msg || "Login failed");
+      alert(err.response?.data?.msg || "Signup failed");
     } finally {
       setLoading(false);
     }
@@ -31,32 +30,39 @@ function Login() {
   return (
     <div className="min-h-screen flex">
 
-      <div className="hidden md:flex w-1/2 bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 text-white items-center justify-center p-10">
+      <div className="hidden md:flex w-1/2 bg-gradient-to-br from-purple-600 via-indigo-600 to-blue-500 text-white items-center justify-center p-10">
         <div className="max-w-md">
           <h1 className="text-5xl font-bold mb-6 leading-tight">
             Team Task Manager
           </h1>
           <p className="text-lg opacity-90 leading-relaxed">
-            Organize projects, assign tasks, and track progress with a modern workflow built for teams.
+            Join your team workspace and manage projects, tasks, and progress efficiently.
           </p>
         </div>
       </div>
 
       <div className="w-full md:w-1/2 flex items-center justify-center bg-gray-100">
-
         <div className="bg-white p-10 rounded-3xl shadow-2xl w-96">
 
           <h2 className="text-3xl font-bold text-gray-800 mb-2 text-center">
-            Welcome Back
+            Create Account
           </h2>
           <p className="text-center text-gray-500 mb-6 text-sm">
-            Login to continue
+            Get started in seconds
           </p>
+
+          <input
+            type="text"
+            placeholder="Full Name"
+            className="w-full mb-4 p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 transition"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
 
           <input
             type="email"
             placeholder="Email address"
-            className="w-full mb-4 p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+            className="w-full mb-4 p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 transition"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -64,36 +70,30 @@ function Login() {
           <input
             type="password"
             placeholder="Password"
-            className="w-full mb-6 p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+            className="w-full mb-6 p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 transition"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
 
           <button
-            onClick={handleLogin}
+            onClick={handleSignup}
             disabled={loading}
             className={`w-full p-3 rounded-xl font-semibold transition ${
               loading
                 ? "bg-gray-400 cursor-not-allowed"
-                : "bg-indigo-600 hover:bg-indigo-700 text-white shadow-md"
+                : "bg-purple-600 hover:bg-purple-700 text-white shadow-md"
             }`}
           >
-            {loading ? "Logging in..." : "Login"}
+            {loading ? "Creating Account..." : "Sign Up"}
           </button>
 
-          <div className="flex items-center my-6">
-            <div className="flex-1 h-px bg-gray-300"></div>
-            <span className="px-3 text-gray-400 text-sm">or</span>
-            <div className="flex-1 h-px bg-gray-300"></div>
-          </div>
-
-          <p className="text-center text-sm text-gray-600">
-            Don’t have an account?{" "}
+          <p className="text-center text-sm text-gray-600 mt-5">
+            Already have an account?{" "}
             <span
-              onClick={() => (window.location.href = "/signup")}
-              className="text-indigo-600 font-semibold cursor-pointer hover:underline"
+              onClick={() => (window.location.href = "/")}
+              className="text-purple-600 font-semibold cursor-pointer hover:underline"
             >
-              Sign up
+              Login
             </span>
           </p>
 
@@ -103,4 +103,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Signup;
