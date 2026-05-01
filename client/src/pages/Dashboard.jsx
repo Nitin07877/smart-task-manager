@@ -11,7 +11,7 @@ function Dashboard() {
   const fetchDashboard = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5001/api/dashboard",
+        "https://smart-task-manager-production-f8a5.up.railway.app/api/dashboard",
         {
           headers: {
             Authorization: `Bearer ${token}`,
