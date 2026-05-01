@@ -1,4 +1,4 @@
-#  Task Manager App
+ # Task Manager App
 
 A full-stack task management system with role-based access, project handling, and real-time task tracking.
 
@@ -9,7 +9,7 @@ A full-stack task management system with role-based access, project handling, an
 This application allows teams to manage projects and tasks efficiently.  
 Admins can create projects and assign tasks to members, while members can update task progress and track their work.
 
----
+
 
 ##  Features
 
@@ -22,7 +22,7 @@ Admins can create projects and assign tasks to members, while members can update
 -  Member-specific task visibility
 -  Modern UI with responsive design
 
----
+
 
 ##  Tech Stack
 
@@ -38,7 +38,7 @@ Admins can create projects and assign tasks to members, while members can update
 ### Database
 - MongoDB (Mongoose)
 
----
+
 
 ##  Folder Structure
 smart-task-manager/
