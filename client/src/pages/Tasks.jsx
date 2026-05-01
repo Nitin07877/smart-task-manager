@@ -30,7 +30,7 @@ function Tasks() {
 
   const fetchUsers = async () => {
     try {
-      const res = await axios.get("http://localhost:5001/api/users", {
+      const res = await axios.get("https://smart-task-manager-production-f8a5.up.railway.app/api/users", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setUsers(res.data || []);
@@ -47,7 +47,7 @@ function Tasks() {
       }
 
       const res = await axios.get(
-        `http://localhost:5001/api/tasks/${selectedProject}`,
+        `https://smart-task-manager-production-f8a5.up.railway.app/api/tasks/${selectedProject}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -92,7 +92,7 @@ function Tasks() {
 
     try {
       await axios.post(
-        "http://localhost:5001/api/tasks",
+        "https://smart-task-manager-production-f8a5.up.railway.app/api/tasks",
         {
           title,
           projectId: selectedProject,
@@ -117,7 +117,7 @@ function Tasks() {
   const updateStatus = async (id, status) => {
     try {
       await axios.patch(
-        `http://localhost:5001/api/tasks/${id}`,
+        `https://smart-task-manager-production-f8a5.up.railway.app/tasks/${id}`,
         { status },
         {
           headers: { Authorization: `Bearer ${token}` },
