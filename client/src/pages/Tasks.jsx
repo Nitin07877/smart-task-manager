@@ -19,7 +19,7 @@ function Tasks() {
 
   const fetchProjects = async () => {
     try {
-      const res = await axios.get("http://localhost:5001/api/projects", {
+      const res = await axios.get("https://smart-task-manager-production-f8a5.up.railway.app/api/projects", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setProjects(res.data || []);
