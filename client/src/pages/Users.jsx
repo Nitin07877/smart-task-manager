@@ -8,7 +8,7 @@ function Users() {
 
   const fetchUsers = async () => {
     try {
-      const res = await axios.get("https://smart-task-manager-production-f8a5.up.railway.app/api/users", {
+      const res = await axios.get("https://smart-task-manager-production-9b6f.up.railway.app/api/users", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setUsers(res.data);
@@ -24,7 +24,7 @@ function Users() {
   const updateRole = async (id, role) => {
     try {
       await axios.patch(
-        `https://smart-task-manager-production-f8a5.up.railway.app/api/users/role/${id}`,
+        `https://smart-task-manager-production-9b6f.up.railway.app/api/users/role/${id}`,
         { role },
         {
           headers: { Authorization: `Bearer ${token}` },
