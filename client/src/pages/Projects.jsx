@@ -12,7 +12,7 @@ function Projects() {
 
   const fetchProjects = async () => {
     try {
-      const res = await axios.get("https://smart-task-manager-production-f8a5.up.railway.app/api/projects", {
+      const res = await axios.get("https://smart-task-manager-production-9b6f.up.railway.app/api/projects", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setProjects(res.data);
@@ -30,7 +30,7 @@ function Projects() {
 
     try {
       await axios.post(
-        "https://smart-task-manager-production-f8a5.up.railway.app/api/projects",
+        "https://smart-task-manager-production-9b6f.up.railway.app/api/projects",
         {
           title,
           description,
