@@ -19,7 +19,7 @@ function Tasks() {
 
   const fetchProjects = async () => {
     try {
-      const res = await axios.get("https://smart-task-manager-production-f8a5.up.railway.app/api/projects", {
+      const res = await axios.get("https://smart-task-manager-production-9b6f.up.railway.app/api/projects", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setProjects(res.data || []);
@@ -30,7 +30,7 @@ function Tasks() {
 
   const fetchUsers = async () => {
     try {
-      const res = await axios.get("https://smart-task-manager-production-f8a5.up.railway.app/api/users", {
+      const res = await axios.get("https://smart-task-manager-production-9b6f.up.railway.app/api/users", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setUsers(res.data || []);
@@ -47,7 +47,7 @@ function Tasks() {
       }
 
       const res = await axios.get(
-        `https://smart-task-manager-production-f8a5.up.railway.app/api/tasks/${selectedProject}`,
+        `https://smart-task-manager-production-9b6f.up.railway.app/api/tasks/${selectedProject}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -92,7 +92,7 @@ function Tasks() {
 
     try {
       await axios.post(
-        "https://smart-task-manager-production-f8a5.up.railway.app/api/tasks",
+        "https://smart-task-manager-production-9b6f.up.railway.app/api/tasks",
         {
           title,
           projectId: selectedProject,
@@ -117,7 +117,7 @@ function Tasks() {
   const updateStatus = async (id, status) => {
     try {
       await axios.patch(
-        `https://smart-task-manager-production-f8a5.up.railway.app/tasks/${id}`,
+        `https://smart-task-manager-production-9b6f.up.railway.app/api/tasks/${id}`,
         { status },
         {
           headers: { Authorization: `Bearer ${token}` },
